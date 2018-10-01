@@ -25,24 +25,13 @@ export class AppComponent implements OnInit {
   currentDevice: MediaDeviceInfo;
 
   ngOnInit(): void {
-
-    // this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
-    //     this.availableDevices = devices;
-
-    //     // selects the devices's back camera by default
-    //     for (const device of devices) {
-    //         if (/back|rear|environment/gi.test(device.label)) {
-    //             this.scanner.changeDevice(device);
-    //             this.currentDevice = device;
-    //             break;
-    //         }
-    //     }
-    // });
-
     this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => this.availableDevices = devices);
     this.scanner.hasDevices.subscribe((has: boolean) => this.hasDevices = has);
     this.scanner.scanComplete.subscribe((result: Result) => this.qrResult = result);
-    this.scanner.permissionResponse.subscribe((perm: boolean) => this.hasPermission = perm);
+    this.scanner.permissionResponse.subscribe(
+      (perm: boolean) => {
+        this.hasPermission = perm;
+      });
   }
 
   displayCameras(cameras: MediaDeviceInfo[]) {

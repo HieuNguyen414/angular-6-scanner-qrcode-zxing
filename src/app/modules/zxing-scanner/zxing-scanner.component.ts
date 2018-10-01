@@ -189,6 +189,10 @@ export class ZXingScannerComponent implements AfterViewInit, OnDestroy, OnChange
     this.isEnumerateDevicesSuported = !!(this.isMediaDevicesSuported && navigator.mediaDevices.enumerateDevices);
   }
 
+  ngOnInit(){
+console.log(this.hasPermission);
+
+  }
   /**
    * Manages the bindinded property changes.
    * @param changes
@@ -319,6 +323,8 @@ export class ZXingScannerComponent implements AfterViewInit, OnDestroy, OnChange
   private setPermission(hasPermission: boolean | null) {
     this.hasPermission = hasPermission;
     this.permissionResponse.next(hasPermission);
+    console.log(this.permissionResponse.next(hasPermission));
+    
     return this.permissionResponse;
   }
 

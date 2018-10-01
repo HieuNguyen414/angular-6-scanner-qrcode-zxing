@@ -3,7 +3,8 @@
   <header>
     <select (change)="onDeviceSelectChange($event.target.value)">
       <option value="" [selected]="!currentDevice">No Device Selected</option>
-      <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{ device.label }}</option>
+      <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{
+        device.label }}</option>
     </select>
   </header>
 
@@ -84,3 +85,6 @@
   </table>
   <p>Angular version: {{ ngVersion }}</p>
 </footer>
+ <video id="video" height="120" width="100" autoplay="true"></video><br>
+ <!-- <video id="camera-stream" width="500" autoplay></video> -->
+ <!-- <video autoplay></video> -->
